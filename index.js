@@ -1,11 +1,11 @@
-const store = require('store')
-const copy = require('deep-copy')
+var store = require('store')
+var copy = require('deep-copy')
 
 exports.install = function (Vue, initialState) {
   // get state from localStorage
-  let state = {}
-  for (let key in initialState) {
-    let val = store.get(key, initialState[key])
+  var state = {}
+  for (var key in initialState) {
+    var val = store.get(key, initialState[key])
     // initial population to localStorage
     store.set(key, val)
     state[key] = val
@@ -24,8 +24,8 @@ exports.install = function (Vue, initialState) {
 }
 
 function createWatchers (state) {
-  let watch = {}
-  for (let key in state) {
+  var watch = {}
+  for (var key in state) {
     watch[key] = {
       deep: true,
       handler: function (newValue, oldValue) {
